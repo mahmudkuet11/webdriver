@@ -1,9 +1,8 @@
 # WebDriver
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
-[![Total Downloads][ico-downloads]][link-downloads]
-[![Build Status][ico-travis]][link-travis]
-[![StyleCI][ico-styleci]][link-styleci]
+[![Latest Stable Version](https://poser.pugx.org/mahmudkuet11/webdriver/v/stable)](https://packagist.org/packages/mahmudkuet11/webdriver)
+[![Total Downloads](https://poser.pugx.org/mahmudkuet11/webdriver/downloads)](https://packagist.org/packages/mahmudkuet11/webdriver)
+[![License](https://poser.pugx.org/mahmudkuet11/webdriver/license)](https://packagist.org/packages/mahmudkuet11/webdriver)
 
 This is where your description should go. Take a look at [contributing.md](contributing.md) to see a to do list.
 
