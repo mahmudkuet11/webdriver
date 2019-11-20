@@ -5,6 +5,8 @@
 
 namespace Mahmud\WebDriver\Tests;
 
+use Mahmud\WebDriver\Facades\Browser;
+use Mahmud\WebDriver\WebDriverServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Symfony\Component\Process\Process;
 
@@ -17,6 +19,10 @@ class TestCase extends BaseTestCase {
     
     private $host = "127.0.0.1:5000";
     
+    public function fullUrl($path) {
+        return "http://" . $this->host . $path;
+    }
+    
     protected function setUp(): void {
         parent::setUp();
         
@@ -28,13 +34,21 @@ class TestCase extends BaseTestCase {
         $this->process->start();
     }
     
+    protected function getPackageProviders($app) {
+        return [
+            WebDriverServiceProvider::class,
+        ];
+    }
+    
+    protected function getApplicationAliases($app) {
+        return [
+            'Browser' => Browser::class,
+        ];
+    }
+    
     protected function tearDown(): void {
         $this->process->stop(3, SIGINT);
         
         parent::tearDown();
-    }
-    
-    public function fullUrl($path) {
-        return "http://" . $this->host . $path;
     }
 }

@@ -39,6 +39,12 @@ class Browser {
         return new Driver($driver);
     }
     
+    public function getHeadless() {
+        $this->headless(true);
+        
+        return $this->get();
+    }
+    
     protected function getChromeArguments() {
         $args = [
             "--disable-gpu",

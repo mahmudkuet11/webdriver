@@ -6,12 +6,6 @@ namespace Mahmud\WebDriver;
 use Mahmud\WebDriver\Tests\TestCase;
 
 class BrowserTest extends TestCase {
-    protected function getPackageProviders($app) {
-        return [
-            WebDriverServiceProvider::class
-        ];
-    }
-    
     /**
      * @test
      */
@@ -35,7 +29,7 @@ class BrowserTest extends TestCase {
         $browser->remoteWebDriver->executeScript("document.write('')");
         
         $source = $browser->refresh()->remoteWebDriver->getPageSource();
-    
+        
         $this->assertContains("Hello mahmudkuet11/webdriver", $source);
         
         $browser->close();
