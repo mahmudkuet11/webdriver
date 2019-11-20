@@ -1,0 +1,50 @@
+{
+    "name": "mahmudkuet11/webdriver",
+    "description": "Web driver build on facebook php webdriver",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "MD. Mahmud Ur Rahman",
+            "email": "mahmudkuet11@gmail.com",
+            "homepage": "https://mahmud.live"
+        }
+    ],
+    "homepage": "https://github.com/mahmudkuet11/webdriver",
+    "keywords": ["Laravel", "WebDriver", "Browser automation", "Crawler", "Scrapper", "php"],
+    "require": {
+        "php": ">=7.1.0",
+        "ext-json": "*",
+        "ext-zip": "*",
+        "facebook/webdriver": "^1.7",
+        "illuminate/console": "~5.7.0|~5.8.0|^6.0|^7.0",
+        "illuminate/support": "~5.7.0|~5.8.0|^6.0|^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~7.0",
+        "mockery/mockery": "^1.1",
+        "orchestra/testbench": "~3.0",
+        "sempro/phpunit-pretty-print": "^1.0",
+        "symfony/process": "^4.3",
+        "ext-pcntl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mahmud\\WebDriver\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mahmud\\WebDriver\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mahmud\\WebDriver\\WebDriverServiceProvider"
+            ],
+            "aliases": {
+                "WebDriver": "Mahmud\\WebDriver\\Facades\\WebDriver"
+            }
+        }
+    }
+}
