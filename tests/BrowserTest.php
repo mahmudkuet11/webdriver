@@ -23,4 +23,36 @@ class BrowserTest extends TestCase {
         
         $browser->close();
     }
+    
+    /**
+     * @test
+     */
+    public function it_can_refresh_page() {
+        $browser = (new Browser())->get();
+        
+        $browser->visit($this->fullUrl("/"));
+        
+        $browser->remoteWebDriver->executeScript("document.write('')");
+        
+        $source = $browser->refresh()->remoteWebDriver->getPageSource();
+    
+        $this->assertContains("Hello mahmudkuet11/webdriver", $source);
+        
+        $browser->close();
+    }
+    
+    /**
+     * @test
+     */
+    public function it_can_go_back() {
+        $browser = (new Browser())->get();
+        
+        $browser->visit($this->fullUrl("/"))
+            ->visit("https://google.com")
+            ->back();
+        
+        $this->assertEquals($browser->remoteWebDriver->getCurrentURL(), $this->fullUrl("/"));
+        
+        $browser->close();
+    }
 }
