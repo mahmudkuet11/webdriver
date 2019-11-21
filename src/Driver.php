@@ -172,14 +172,14 @@ class Driver {
         return $this;
     }
     
+    public function uncheck($selector) {
+        return $this->check($selector, false);
+    }
+    
     public function check($selector, $value = true) {
         $this->remoteWebDriver->executeScript(sprintf("document.querySelector('{$selector}').checked = %s;", $value ? "true" : "false"));
         
         return $this;
-    }
-    
-    public function uncheck($selector) {
-        return $this->check($selector, false);
     }
     
     public function select($value, $selector) {
@@ -188,10 +188,8 @@ class Driver {
         return $this;
     }
     
-    public function waitForElement($selector) {
-        $this->remoteWebDriver->wait()->until(
-            WebDriverExpectedCondition::presenceOfAllElementsLocatedBy(WebDriverBy::cssSelector($selector))
-        );
+    public function clear($selector) {
+        $this->findElement($selector)->clear();
         
         return $this;
     }
@@ -205,6 +203,14 @@ class Driver {
     public function findElement($selector, RemoteWebElement $parentElement = null) {
         $parentElement = $parentElement ?: $this->parentElement();
         return $parentElement->findElement(WebDriverBy::cssSelector($selector));
+    }
+    
+    public function waitForElement($selector) {
+        $this->remoteWebDriver->wait()->until(
+            WebDriverExpectedCondition::presenceOfAllElementsLocatedBy(WebDriverBy::cssSelector($selector))
+        );
+        
+        return $this;
     }
     
     /**

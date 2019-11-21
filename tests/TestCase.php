@@ -15,7 +15,7 @@ class TestCase extends BaseTestCase {
     /**
      * @var Process
      */
-    private $process;
+    private $phpProcess;
     
     private $host = "127.0.0.1:5000";
     
@@ -30,8 +30,8 @@ class TestCase extends BaseTestCase {
     }
     
     private function startServer() {
-        $this->process = new Process(["php", "-S", $this->host, "-t", __DIR__ . "/web/"]);
-        $this->process->start();
+        $this->phpProcess = new Process(["php", "-S", $this->host, "-t", __DIR__ . "/web/"]);
+        $this->phpProcess->start();
     }
     
     protected function getPackageProviders($app) {
@@ -47,7 +47,7 @@ class TestCase extends BaseTestCase {
     }
     
     protected function tearDown(): void {
-        $this->process->stop(3, SIGINT);
+        $this->phpProcess->stop(3, SIGINT);
         
         parent::tearDown();
     }

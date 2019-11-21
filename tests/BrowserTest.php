@@ -49,4 +49,19 @@ class BrowserTest extends TestCase {
         
         $browser->close();
     }
+    
+    /**
+     * @test
+     */
+    public function it_can_clear_a_input_field() {
+        $browser = (new Browser())->get();
+    
+        $browser->visit($this->fullUrl("/"))
+            ->type("Hello", "#input1")
+            ->clear("#input1");
+        
+        $this->assertEquals("", $browser->findElement("#input1")->getAttribute('value'));
+    
+        $browser->close();
+    }
 }
